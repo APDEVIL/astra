@@ -76,8 +76,8 @@ export function HeroAbout() {
 					>
 						{PLATFORM_STATS.map((stat) => (
 							<div
-								key={stat.label}
 								className="flex flex-col items-center gap-0.5"
+								key={stat.label}
 							>
 								<span className="font-bold font-display text-2xl text-[#F2F2F0]">
 									{formatStat(stat.value, stat.suffix)}

@@ -1,4 +1,4 @@
-import type { Variants, Transition, Easing } from "framer-motion";
+import type { Easing, Transition, Variants } from "framer-motion";
 
 // ─── Base Transitions ─────────────────────────────────────────────────────────
 

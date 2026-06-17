@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { fadeInUp, staggerContainer } from "@/lib/animations";
@@ -36,12 +36,11 @@ function Field({
 
 	return (
 		<div className="flex flex-col gap-1.5">
-			<label htmlFor={id} className="font-medium text-[#A3B3A8] text-sm">
+			<label className="font-medium text-[#A3B3A8] text-sm" htmlFor={id}>
 				{label}
 			</label>
 			<div className="relative">
 				<input
-					id={id}
 					autoComplete={isPassword ? "current-password" : "email"}
 					className={cn(
 						"w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-[#F2F2F0] text-sm",
@@ -53,17 +52,18 @@ function Field({
 							: "border-white/[0.08] hover:border-white/[0.14]",
 						isPassword && "pr-11",
 					)}
+					id={id}
+					onChange={(e) => onChange(e.target.value)}
 					placeholder={placeholder}
 					type={isPassword ? (show ? "text" : "password") : type}
 					value={value}
-					onChange={(e) => onChange(e.target.value)}
 				/>
 				{isPassword && (
 					<button
 						aria-label={show ? "Hide password" : "Show password"}
 						className="absolute top-1/2 right-3 -translate-y-1/2 text-[#566B60] hover:text-[#A3B3A8]"
-						type="button"
 						onClick={() => setShow((v) => !v)}
+						type="button"
 					>
 						{show ? <EyeOff size={16} /> : <Eye size={16} />}
 					</button>
@@ -150,19 +150,19 @@ export function LoginForm() {
 			>
 				{(["email", "astraId"] as LoginTab[]).map((t) => (
 					<button
-						key={t}
 						className={cn(
 							"flex-1 rounded-lg px-4 py-2 font-medium text-sm transition-all duration-200",
 							tab === t
 								? "bg-[#1DB97B] text-[#050C07] shadow-sm"
 								: "text-[#566B60] hover:text-[#A3B3A8]",
 						)}
-						type="button"
+						key={t}
 						onClick={() => {
 							setTab(t);
 							setErrors({});
 							setServerError("");
 						}}
+						type="button"
 					>
 						{t === "email" ? "Email Login" : "Astra ID Login"}
 					</button>
@@ -172,26 +172,26 @@ export function LoginForm() {
 			{/* Fields */}
 			<motion.form
 				className="flex flex-col gap-4"
-				variants={fadeInUp}
 				onSubmit={handleSubmit}
+				variants={fadeInUp}
 			>
 				{tab === "email" ? (
 					<>
 						<Field
 							error={errors.email}
 							label="Email"
+							onChange={setEmail}
 							placeholder="you@example.com"
 							type="email"
 							value={email}
-							onChange={setEmail}
 						/>
 						<Field
 							error={errors.password}
 							label="Password"
+							onChange={setPassword}
 							placeholder="••••••••"
 							type="password"
 							value={password}
-							onChange={setPassword}
 						/>
 					</>
 				) : (
@@ -199,17 +199,17 @@ export function LoginForm() {
 						<Field
 							error={errors.astraId}
 							label="Astra ID"
+							onChange={setAstraId}
 							placeholder="ASTRA-XXXXXX"
 							value={astraId}
-							onChange={setAstraId}
 						/>
 						<Field
 							error={errors.astraPassword}
 							label="Password"
+							onChange={setAstraPassword}
 							placeholder="••••••••"
 							type="password"
 							value={astraPassword}
-							onChange={setAstraPassword}
 						/>
 					</>
 				)}
@@ -253,9 +253,9 @@ export function LoginForm() {
 					"disabled:cursor-not-allowed disabled:opacity-60",
 				)}
 				disabled={loading}
+				onClick={handleGitHub}
 				type="button"
 				variants={fadeInUp}
-				onClick={handleGitHub}
 			>
 				<svg
 					aria-hidden="true"

@@ -1,8 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 
 import { fadeInLeft, fadeInRight } from "@/lib/animations";
 
@@ -86,8 +86,8 @@ export function AuthShell({ children, heading, subheading }: AuthShellProps) {
 
 					<ul className="flex flex-col gap-4">
 						{TRUST_POINTS.map((point) => (
-							<li key={point.text} className="flex items-start gap-3">
-								<span className="mt-0.5 text-lg" aria-hidden="true">
+							<li className="flex items-start gap-3" key={point.text}>
+								<span aria-hidden="true" className="mt-0.5 text-lg">
 									{point.icon}
 								</span>
 								<span className="text-[#A3B3A8] text-sm leading-relaxed">

@@ -1,13 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
-
+import Link from "next/link";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { AUTH_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 // ─── CTA Section ──────────────────────────────────────────────────────────────
 
@@ -26,9 +25,9 @@ export function CTASection() {
 
 	return (
 		<section
-			ref={ref}
 			aria-labelledby="cta-heading"
 			className="relative overflow-hidden bg-[#050C07] py-24 md:py-32"
+			ref={ref}
 		>
 			{/* Ambient glow */}
 			<div
@@ -44,10 +43,10 @@ export function CTASection() {
 			{!shouldReduceMotion &&
 				[1, 2, 3].map((i) => (
 					<motion.div
-						key={i}
 						animate={{ opacity: [0.06, 0.02, 0.06], scale: [1, 1.15, 1] }}
 						aria-hidden="true"
-						className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#1DB97B]/20"
+						className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#1DB97B]/20"
+						key={i}
 						style={{
 							height: `${200 + i * 180}px`,
 							width: `${200 + i * 180}px`,
@@ -144,8 +143,8 @@ export function CTASection() {
 						<div aria-hidden="true" className="flex -space-x-2">
 							{AVATAR_COLORS.map((color, i) => (
 								<div
-									key={color}
 									className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#050C07] font-bold text-white text-xs"
+									key={color}
 									style={{ backgroundColor: color, zIndex: 5 - i }}
 								>
 									{AVATAR_LABELS[i]}

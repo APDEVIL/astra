@@ -1,20 +1,19 @@
 "use client";
 
-import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-
+import { useMouseParallax } from "@/hooks/useMouseParallax";
 import {
+	glowPulse,
 	heroButtonsVariant,
 	heroHeadlineVariant,
 	heroSubtextVariant,
 	heroTagVariant,
-	glowPulse,
 } from "@/lib/animations";
 import { APP_META, AUTH_LINKS, THREE_CONFIG } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { useMouseParallax } from "@/hooks/useMouseParallax";
 
 // ─── Three.js Background Canvas ───────────────────────────────────────────────
 
@@ -192,8 +191,8 @@ function CandlestickCanvas() {
 
 	return (
 		<canvas
-			ref={canvasRef}
 			className="pointer-events-none absolute inset-0 h-full w-full"
+			ref={canvasRef}
 		/>
 	);
 }

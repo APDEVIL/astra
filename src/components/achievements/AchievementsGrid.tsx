@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-import { staggerContainer } from "@/lib/animations";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { staggerContainer } from "@/lib/animations";
 import type { RouterOutputs } from "@/trpc/react";
 
 import { MilestoneCard } from "./MilestoneCard";
@@ -24,7 +23,7 @@ export function AchievementsGrid({ items }: AchievementsGridProps) {
 	if (items.length === 0) {
 		return (
 			<div className="flex min-h-[300px] flex-col items-center justify-center gap-3">
-				<span className="text-4xl" aria-hidden="true">
+				<span aria-hidden="true" className="text-4xl">
 					🏆
 				</span>
 				<p className="text-[#566B60] text-sm">No achievements published yet.</p>
@@ -34,17 +33,17 @@ export function AchievementsGrid({ items }: AchievementsGridProps) {
 
 	return (
 		<motion.div
-			ref={ref}
 			animate={isVisible ? "visible" : "hidden"}
 			className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
 			initial="hidden"
+			ref={ref}
 			variants={staggerContainer}
 		>
 			{items.map((achievement, i) => (
 				<MilestoneCard
-					key={achievement.id}
 					achievement={achievement}
 					index={i}
+					key={achievement.id}
 				/>
 			))}
 		</motion.div>

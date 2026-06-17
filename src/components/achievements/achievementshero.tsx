@@ -99,8 +99,8 @@ export function AchievementsHero({ count }: AchievementsHeroProps) {
 						{ label: "Student Success Stories", value: "500+" },
 					].map((stat) => (
 						<div
-							key={stat.label}
 							className="flex flex-col items-center gap-0.5"
+							key={stat.label}
 						>
 							<span className="font-bold font-display text-2xl text-[#F2F2F0]">
 								{stat.value}

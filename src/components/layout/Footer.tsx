@@ -1,13 +1,12 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
-
+import Image from "next/image";
+import Link from "next/link";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { APP_META, SOCIAL_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 // ─── Footer columns ───────────────────────────────────────────────────────────
 
@@ -83,8 +82,8 @@ export function Footer() {
 
 	return (
 		<footer
-			ref={ref}
 			className="relative border-white/[0.06] border-t bg-[#050C07]"
+			ref={ref}
 		>
 			{/* Top glow line */}
 			<div
@@ -125,7 +124,6 @@ export function Footer() {
 						<div className="mt-6 flex items-center gap-3">
 							{SOCIAL_LINKS.map((social) => (
 								<a
-									key={social.label}
 									aria-label={social.label}
 									className={cn(
 										"flex h-8 w-8 items-center justify-center rounded-full",
@@ -134,6 +132,7 @@ export function Footer() {
 										"hover:border-[#1DB97B]/30 hover:text-[#1DB97B]",
 									)}
 									href={social.href}
+									key={social.label}
 									rel="noopener noreferrer"
 									target="_blank"
 								>
@@ -146,8 +145,8 @@ export function Footer() {
 					{/* Link columns */}
 					{FOOTER_COLUMNS.map((col) => (
 						<motion.div
-							key={col.heading}
 							className="col-span-1"
+							key={col.heading}
 							variants={fadeInUp}
 						>
 							<p className="mb-4 font-semibold text-[#F2F2F0] text-sm">

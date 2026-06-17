@@ -1,4 +1,3 @@
-import { createCallerFactory, createTRPCRouter } from "@/server/api/trpc";
 import { adminRouter } from "@/server/api/routers/admin.router";
 import { assessmentRouter } from "@/server/api/routers/assessment.router";
 import { authRouter } from "@/server/api/routers/auth.router";
@@ -8,6 +7,7 @@ import { eventRouter } from "@/server/api/routers/event.router";
 import { notificationRouter } from "@/server/api/routers/notification.router";
 import { paymentRouter } from "@/server/api/routers/payment.router";
 import { subscriptionRouter } from "@/server/api/routers/subscription.router";
+import { createCallerFactory, createTRPCRouter } from "@/server/api/trpc";
 
 /**
  * This is the primary router for your server.

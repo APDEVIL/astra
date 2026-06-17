@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { SCROLL_CONFIG } from "@/lib/constants";
 
 interface UseScrollRevealOptions {
@@ -15,7 +15,7 @@ interface UseScrollRevealOptions {
 }
 
 interface UseScrollRevealReturn<T extends HTMLElement> {
-	ref: React.RefObject<T>;
+	ref: React.RefObject<T | null>;
 	isVisible: boolean;
 	hasBeenVisible: boolean;
 }
@@ -87,7 +87,7 @@ interface UseStaggeredRevealOptions extends UseScrollRevealOptions {
 }
 
 interface UseStaggeredRevealReturn<T extends HTMLElement> {
-	containerRef: React.RefObject<T>;
+	containerRef: React.RefObject<T | null>;
 	/** Call with index to check if that child should be visible */
 	isChildVisible: (index: number) => boolean;
 }

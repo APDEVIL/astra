@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-
-import { CTASection } from "@/components/landing/CTASection";
 import { CoursesPreview } from "@/components/landing/CoursesPreview";
+import { CTASection } from "@/components/landing/CTASection";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { SectorSection } from "@/components/landing/SectorSection";
 import { StatsSection } from "@/components/landing/StatsSection";

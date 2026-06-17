@@ -1,16 +1,15 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-
+import { useState } from "react";
+import { useNavbarScroll } from "@/hooks/useScrollReveal";
 import { fadeIn, navbarSlideDown } from "@/lib/animations";
 import { AUTH_LINKS, NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { useNavbarScroll } from "@/hooks/useScrollReveal";
 
 // ─── Navbar ───────────────────────────────────────────────────────────────────
 
@@ -57,7 +56,6 @@ export function Navbar() {
 						<div className="hidden items-center gap-1 rounded-full border border-white/[0.08] bg-white/[0.05] px-2 py-1.5 md:flex">
 							{NAV_LINKS.filter((l) => !l.disabled).map((link) => (
 								<Link
-									key={link.href}
 									className={cn(
 										"relative rounded-full px-4 py-1.5 font-medium text-sm transition-colors duration-200",
 										isActive(link.href)
@@ -65,6 +63,7 @@ export function Navbar() {
 											: "text-[#A3B3A8] hover:text-[#F2F2F0]",
 									)}
 									href={link.href}
+									key={link.href}
 								>
 									{isActive(link.href) && (
 										<motion.span
@@ -122,8 +121,8 @@ export function Navbar() {
 						<button
 							aria-label={mobileOpen ? "Close menu" : "Open menu"}
 							className="p-2 text-[#A3B3A8] transition-colors hover:text-[#F2F2F0] md:hidden"
-							type="button"
 							onClick={() => setMobileOpen((v) => !v)}
+							type="button"
 						>
 							{mobileOpen ? <X size={22} /> : <Menu size={22} />}
 						</button>
@@ -136,16 +135,15 @@ export function Navbar() {
 				{mobileOpen && (
 					<>
 						<motion.div
-							key="backdrop"
 							animate={{ opacity: 1 }}
 							className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
 							exit={{ opacity: 0 }}
 							initial={{ opacity: 0 }}
+							key="backdrop"
 							onClick={() => setMobileOpen(false)}
 						/>
 
 						<motion.div
-							key="drawer"
 							animate={{ x: 0 }}
 							className={cn(
 								"fixed top-0 right-0 bottom-0 z-50 w-72 md:hidden",
@@ -153,13 +151,14 @@ export function Navbar() {
 							)}
 							exit={{ x: "100%" }}
 							initial={{ x: "100%" }}
+							key="drawer"
 							transition={{ damping: 30, stiffness: 300, type: "spring" }}
 						>
 							<button
 								aria-label="Close menu"
 								className="absolute top-5 right-5 p-2 text-[#A3B3A8]"
-								type="button"
 								onClick={() => setMobileOpen(false)}
+								type="button"
 							>
 								<X size={20} />
 							</button>
@@ -167,9 +166,9 @@ export function Navbar() {
 							<nav className="flex flex-col gap-1">
 								{NAV_LINKS.filter((l) => !l.disabled).map((link, i) => (
 									<motion.div
-										key={link.href}
 										animate="visible"
 										initial="hidden"
+										key={link.href}
 										transition={{ delay: i * 0.07 }}
 										variants={fadeIn}
 									>

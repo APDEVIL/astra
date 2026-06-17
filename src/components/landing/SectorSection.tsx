@@ -1,10 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { SECTORS } from "@/lib/constants";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 import { SectorCard } from "./SectorCard";
 
@@ -15,14 +14,14 @@ export function SectorSection() {
 
 	return (
 		<section
-			ref={ref}
 			aria-labelledby="sectors-heading"
 			className="relative overflow-hidden bg-[#050C07] py-24 md:py-32"
+			ref={ref}
 		>
 			{/* Top rule */}
 			<div
 				aria-hidden="true"
-				className="absolute left-0 right-0 top-0 h-px"
+				className="absolute top-0 right-0 left-0 h-px"
 				style={{
 					background:
 						"linear-gradient(90deg, transparent 0%, rgba(29,185,123,0.2) 30%, rgba(29,185,123,0.2) 70%, transparent 100%)",
@@ -48,7 +47,7 @@ export function SectorSection() {
 					variants={staggerContainer}
 				>
 					<motion.div
-						className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.04] px-4 py-1.5 text-sm font-medium text-[#1DB97B]"
+						className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.04] px-4 py-1.5 font-medium text-[#1DB97B] text-sm"
 						variants={fadeInUp}
 					>
 						<svg
@@ -63,7 +62,7 @@ export function SectorSection() {
 					</motion.div>
 
 					<motion.h2
-						className="max-w-2xl font-display text-4xl font-bold leading-tight tracking-tight text-[#F2F2F0] md:text-5xl"
+						className="max-w-2xl font-bold font-display text-4xl text-[#F2F2F0] leading-tight tracking-tight md:text-5xl"
 						id="sectors-heading"
 						variants={fadeInUp}
 					>
@@ -80,7 +79,7 @@ export function SectorSection() {
 					</motion.h2>
 
 					<motion.p
-						className="max-w-xl text-lg leading-relaxed text-[#A3B3A8]"
+						className="max-w-xl text-[#A3B3A8] text-lg leading-relaxed"
 						variants={fadeInUp}
 					>
 						Structured learning for serious learners — from equity markets to
@@ -91,7 +90,7 @@ export function SectorSection() {
 				{/* Cards */}
 				<div className="grid grid-cols-1 gap-6 md:grid-cols-3">
 					{SECTORS.map((sector, i) => (
-						<SectorCard key={sector.id} index={i} sector={sector} />
+						<SectorCard index={i} key={sector.id} sector={sector} />
 					))}
 				</div>
 
@@ -103,7 +102,7 @@ export function SectorSection() {
 					viewport={{ once: true }}
 					whileInView={{ opacity: 1, y: 0 }}
 				>
-					<p className="text-sm text-[#566B60]">
+					<p className="text-[#566B60] text-sm">
 						All programs include live sessions, recorded content, and
 						performance tracking.
 					</p>

@@ -3,11 +3,10 @@
 import { animate, motion } from "framer-motion";
 import { Award, BarChart2, Users, Video } from "lucide-react";
 import { useEffect, useRef } from "react";
-
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { PLATFORM_STATS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 // ─── Icon Map ─────────────────────────────────────────────────────────────────
 
@@ -148,9 +147,9 @@ export function StatsSection() {
 
 	return (
 		<section
-			ref={ref}
 			aria-labelledby="stats-heading"
 			className="relative overflow-hidden bg-[#050C07] py-24 md:py-32"
+			ref={ref}
 		>
 			{/* Grid texture */}
 			<div
@@ -211,8 +210,8 @@ export function StatsSection() {
 				<div className="mb-16 grid grid-cols-2 gap-4 md:grid-cols-4">
 					{PLATFORM_STATS.map((stat, i) => (
 						<StatCard
-							key={stat.label}
 							index={i}
+							key={stat.label}
 							shouldAnimate={isVisible}
 							stat={stat}
 						/>
@@ -223,13 +222,13 @@ export function StatsSection() {
 				<div className="grid grid-cols-1 gap-5 md:grid-cols-3">
 					{TRUST_FEATURES.map((feature, i) => (
 						<motion.div
-							key={feature.title}
 							className={cn(
 								"flex gap-4 rounded-xl border p-6",
 								"border-white/[0.06] bg-white/[0.02]",
 								"transition-all duration-300 hover:border-white/[0.10] hover:bg-white/[0.04]",
 							)}
 							initial={{ opacity: 0, x: -20 }}
+							key={feature.title}
 							transition={{ delay: 0.2 + i * 0.12, duration: 0.5 }}
 							viewport={{ once: true }}
 							whileInView={{ opacity: 1, x: 0 }}

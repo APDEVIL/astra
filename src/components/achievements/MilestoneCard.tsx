@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import Image from "next/image";
 import { useRef } from "react";
 
 import { fadeInUp } from "@/lib/animations";
@@ -67,13 +67,15 @@ export function MilestoneCard({ achievement, index }: MilestoneCardProps) {
 			variants={fadeInUp}
 		>
 			<motion.div
-				ref={cardRef}
 				className={cn(
 					"group relative flex h-full flex-col overflow-hidden rounded-2xl",
 					"border border-white/[0.08] bg-[#0A1510]",
 					"cursor-default transition-[border-color] duration-300",
 					"hover:border-[#1DB97B]/25",
 				)}
+				onMouseLeave={handleMouseLeave}
+				onMouseMove={handleMouseMove}
+				ref={cardRef}
 				style={{
 					boxShadow: "0 0 0 1px rgba(255,255,255,0.03)",
 					rotateX,
@@ -84,8 +86,6 @@ export function MilestoneCard({ achievement, index }: MilestoneCardProps) {
 					boxShadow:
 						"0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(29,185,123,0.15)",
 				}}
-				onMouseLeave={handleMouseLeave}
-				onMouseMove={handleMouseMove}
 			>
 				{/* Shine overlay */}
 				<motion.div

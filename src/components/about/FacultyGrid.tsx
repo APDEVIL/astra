@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { FaLinkedin, FaTwitter } from "react-icons/fa";
 
 import { fadeInUp, staggerContainer } from "@/lib/animations";

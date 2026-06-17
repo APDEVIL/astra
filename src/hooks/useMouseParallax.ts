@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useCallback, useState } from "react";
-import { lerp, clamp } from "@/lib/utils";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { clamp, lerp } from "@/lib/utils";
 
 interface MousePosition {
 	/** Raw mouse X in pixels */

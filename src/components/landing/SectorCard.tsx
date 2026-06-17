@@ -73,9 +73,9 @@ function SectorPattern({ accent, bgKey }: { accent: string; bgKey: string }) {
 				{[80, 90, 100, 110].map((y) =>
 					[75, 90, 105, 120].map((x) => (
 						<rect
-							key={`${x}-${y}`}
 							fill="#050C07"
 							height={8}
+							key={`${x}-${y}`}
 							opacity={0.5}
 							rx={1}
 							width={8}
@@ -167,12 +167,14 @@ export function SectorCard({ index, sector }: SectorCardProps) {
 			whileInView={{ opacity: 1, y: 0 }}
 		>
 			<motion.div
-				ref={cardRef}
 				className={cn(
 					"group relative h-full min-h-[320px] cursor-pointer overflow-hidden rounded-2xl",
 					"border border-white/[0.08] bg-[#0A1510] p-8",
 					"transition-[border-color] duration-300 hover:border-white/[0.16]",
 				)}
+				onMouseLeave={handleMouseLeave}
+				onMouseMove={handleMouseMove}
+				ref={cardRef}
 				style={{
 					boxShadow: "0 0 0 1px rgba(255,255,255,0.04)",
 					rotateX,
@@ -182,8 +184,6 @@ export function SectorCard({ index, sector }: SectorCardProps) {
 				whileHover={{
 					boxShadow: `0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px ${sector.accent}28`,
 				}}
-				onMouseLeave={handleMouseLeave}
-				onMouseMove={handleMouseMove}
 			>
 				{/* Shine */}
 				<motion.div

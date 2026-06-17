@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import {
 	ArrowRight,
@@ -9,12 +8,12 @@ import {
 	Clock,
 	Users,
 } from "lucide-react";
+import Link from "next/link";
 import { useRef } from "react";
-
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { AUTH_LINKS } from "@/lib/constants";
 import { cn, formatINR } from "@/lib/utils";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 // ─── Sample Data ──────────────────────────────────────────────────────────────
 
@@ -197,9 +196,9 @@ export function CoursesPreview() {
 
 	return (
 		<section
-			ref={ref}
 			aria-labelledby="courses-heading"
 			className="relative overflow-hidden bg-[#050C07] py-24 md:py-32"
+			ref={ref}
 		>
 			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 				{/* Header */}
@@ -245,8 +244,8 @@ export function CoursesPreview() {
 								"text-[#A3B3A8] transition-all duration-200",
 								"hover:border-white/[0.16] hover:bg-white/[0.10] hover:text-[#F2F2F0]",
 							)}
-							type="button"
 							onClick={() => scrollBy("left")}
+							type="button"
 						>
 							<ChevronLeft size={18} />
 						</button>
@@ -258,8 +257,8 @@ export function CoursesPreview() {
 								"text-[#A3B3A8] transition-all duration-200",
 								"hover:border-white/[0.16] hover:bg-white/[0.10] hover:text-[#F2F2F0]",
 							)}
-							type="button"
 							onClick={() => scrollBy("right")}
+							type="button"
 						>
 							<ChevronRight size={18} />
 						</button>
@@ -290,12 +289,12 @@ export function CoursesPreview() {
 						}}
 					/>
 					<div
-						ref={scrollRef}
 						className="flex gap-5 overflow-x-auto scroll-smooth pb-4"
+						ref={scrollRef}
 						style={{ msOverflowStyle: "none", scrollbarWidth: "none" }}
 					>
 						{SAMPLE_COURSES.map((course) => (
-							<CourseCard key={course.id} course={course} />
+							<CourseCard course={course} key={course.id} />
 						))}
 					</div>
 				</div>

@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { cn } from "@/lib/utils";
 import { pageTransitionVariants } from "@/lib/animations";
+import { cn } from "@/lib/utils";
 
 interface PageWrapperProps {
 	children: React.ReactNode;
@@ -31,16 +31,16 @@ export function PageWrapper({
 
 	return (
 		<motion.main
-			key={pageKey}
-			variants={variants}
-			initial="initial"
 			animate="animate"
-			exit="exit"
 			className={cn(
 				"min-h-screen bg-[#050C07] text-[#F2F2F0]",
 				!noPadding && "pt-16 md:pt-18",
 				className,
 			)}
+			exit="exit"
+			initial="initial"
+			key={pageKey}
+			variants={variants}
 		>
 			{children}
 		</motion.main>
