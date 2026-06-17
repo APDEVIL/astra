@@ -1,0 +1,183 @@
+/* ─── Astra — animations.css ─────────────────────────────────────────────────
+   Pure CSS keyframe animations.
+   Framer Motion handles most JS-driven motion; these are for:
+   - CSS-only pulsing dots / status indicators
+   - Skeleton loading states
+   - Continuous ambient loops that don't need JS
+   ──────────────────────────────────────────────────────────────────────────── */
+
+/* ─── Pulse ──────────────────────────────────────────────────────────────────
+   Used on: live-status dot, hero pill indicator                               */
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	50% {
+		opacity: 0.4;
+		transform: scale(0.85);
+	}
+}
+
+.animate-pulse {
+	animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ─── Spin ───────────────────────────────────────────────────────────────────
+   Used on: Loader2 icon inside buttons while loading                          */
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.animate-spin {
+	animation: spin 0.75s linear infinite;
+}
+
+/* ─── Ping ───────────────────────────────────────────────────────────────────
+   Used on: notification badges, live session indicators                       */
+@keyframes ping {
+	75%,
+	100% {
+		transform: scale(2);
+		opacity: 0;
+	}
+}
+
+.animate-ping {
+	animation: ping 1.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* ─── Fade In ────────────────────────────────────────────────────────────────
+   CSS-only fallback for non-JS environments                                   */
+@keyframes fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.animate-fade-in {
+	animation: fade-in 0.45s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+}
+
+/* ─── Skeleton Shimmer ───────────────────────────────────────────────────────
+   Used on: loading placeholders for cards / lists                             */
+@keyframes shimmer {
+	0% {
+		background-position: -200% 0;
+	}
+
+	100% {
+		background-position: 200% 0;
+	}
+}
+
+.skeleton {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 0.04) 25%,
+		rgba(255, 255, 255, 0.08) 50%,
+		rgba(255, 255, 255, 0.04) 75%
+	);
+	background-size: 200% 100%;
+	animation: shimmer 1.6s ease-in-out infinite;
+	border-radius: 0.5rem;
+}
+
+/* ─── Float ──────────────────────────────────────────────────────────────────
+   Used on: ambient hero elements that gently bob                              */
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+.animate-float {
+	animation: float 4s ease-in-out infinite;
+}
+
+/* ─── Glow Pulse ─────────────────────────────────────────────────────────────
+   Used on: CTA button glow ring, sector card accent glow                      */
+@keyframes glow-pulse {
+	0%,
+	100% {
+		box-shadow: 0 0 20px rgba(29, 185, 123, 0.25);
+	}
+
+	50% {
+		box-shadow: 0 0 40px rgba(29, 185, 123, 0.5);
+	}
+}
+
+.animate-glow-pulse {
+	animation: glow-pulse 2.5s ease-in-out infinite;
+}
+
+/* ─── Marquee / Ticker ───────────────────────────────────────────────────────
+   Used on: scrolling trust strip / payment logos row (if needed)              */
+@keyframes marquee {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+.animate-marquee {
+	animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+	animation-play-state: paused;
+}
+
+/* ─── Slide Down ─────────────────────────────────────────────────────────────
+   CSS-only fallback for navbar entrance                                       */
+@keyframes slide-down {
+	from {
+		opacity: 0;
+		transform: translateY(-16px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.animate-slide-down {
+	animation: slide-down 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+}
+
+/* ─── Reduced Motion Override ────────────────────────────────────────────────
+   Respects prefers-reduced-motion at the CSS level for all keyframe anims     */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
