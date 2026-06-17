@@ -5,21 +5,21 @@ import { env } from "@/env";
 import { db } from "@/server/db";
 
 export const auth = betterAuth({
-    baseURL: env.BETTER_AUTH_URL, // ✨ Added baseURL configuration
-    database: drizzleAdapter(db, {
-        provider: "pg", // or "pg" or "mysql"
-    }),
-    emailAndPassword: {
-        enabled: true,
-    },
-    socialProviders: {
-        github: {
-            clientId: env.BETTER_AUTH_GITHUB_CLIENT_ID,
-            clientSecret: env.BETTER_AUTH_GITHUB_CLIENT_SECRET,
-            // ✨ Dynamically construct the redirect URI so it works in both dev and prod
-            redirectURI: `${env.BETTER_AUTH_URL}/api/auth/callback/github`,
-        },
-    },
+	baseURL: env.BETTER_AUTH_URL, // ✨ Added baseURL configuration
+	database: drizzleAdapter(db, {
+		provider: "pg", // or "pg" or "mysql"
+	}),
+	emailAndPassword: {
+		enabled: true,
+	},
+	socialProviders: {
+		github: {
+			clientId: env.BETTER_AUTH_GITHUB_CLIENT_ID,
+			clientSecret: env.BETTER_AUTH_GITHUB_CLIENT_SECRET,
+			// ✨ Dynamically construct the redirect URI so it works in both dev and prod
+			redirectURI: `${env.BETTER_AUTH_URL}/api/auth/callback/github`,
+		},
+	},
 });
 
 export type Session = typeof auth.$Infer.Session;
