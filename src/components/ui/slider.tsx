@@ -1,3 +1,4 @@
+// biome-ignore-all lint/suspicious/noArrayIndexKey: false positive
 "use client";
 
 import { Slider as SliderPrimitive } from "radix-ui";
@@ -22,6 +23,8 @@ function Slider({
 					: [min, max],
 		[value, defaultValue, min, max],
 	);
+
+	const id = React.useId();
 
 	return (
 		<SliderPrimitive.Root
@@ -49,7 +52,7 @@ function Slider({
 				<SliderPrimitive.Thumb
 					className="relative block size-3 shrink-0 select-none rounded-full border border-ring bg-white ring-ring/50 transition-[color,box-shadow] after:absolute after:-inset-2 hover:ring-3 focus-visible:outline-hidden focus-visible:ring-3 active:ring-3 disabled:pointer-events-none disabled:opacity-50"
 					data-slot="slider-thumb"
-					key={`${props.id || "slider"}-thumb-${index}`}
+					key={`${id}-${index}`}
 				/>
 			))}
 		</SliderPrimitive.Root>
