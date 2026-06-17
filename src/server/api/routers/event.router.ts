@@ -235,7 +235,7 @@ export const eventRouter = createTRPCRouter({
 						userId,
 						type: "workshop_confirmed",
 						title: "You're in! Workshop registration confirmed 🎉",
-						body: `Your spot for "${ws.title}" is confirmed. Your ID: ${participant!.participantEventId}`,
+						body: `Your spot for "${ws.title}" is confirmed. Your ID: ${participant?.participantEventId}`,
 						entityType: "workshop",
 						entityId: input.workshopId,
 						ctaUrl: `/workshops/${ws.slug}`,

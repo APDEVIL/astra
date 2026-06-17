@@ -1,7 +1,7 @@
 import { and, desc, eq, gte, lte } from "drizzle-orm";
 import { z } from "zod";
 import { Errors, trpcSafe } from "@/lib/errors";
-import { guidanceSession, subscription } from "@/server/db/schema";
+import { guidanceSession } from "@/server/db/schema";
 import { AccessService } from "@/server/services/access.service";
 import {
 	createTRPCRouter,

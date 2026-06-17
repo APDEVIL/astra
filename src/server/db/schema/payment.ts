@@ -10,8 +10,8 @@ import {
 } from "drizzle-orm/pg-core";
 
 import { user } from "./auth";
-import { course, enrollment } from "./course";
-import { workshop, workshopParticipant } from "./event";
+import { enrollment } from "./course";
+import { workshopParticipant } from "./event";
 
 // ─── Enums ────────────────────────────────────────────────────────────────────
 export const paymentStatusEnum = pgEnum("payment_status", [
